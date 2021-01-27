@@ -18,6 +18,13 @@
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
 }
 
+$bp-tab-land: 75em;
+$bp-large: 68.75em;
+$bp-tab-port: 56.25em;
+$bp-phone: 37.5em;
+$bp-small: 31.25em;
+$bp-smallest: 28.2em;
+
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +40,10 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
 }
 
 body {
