@@ -263,13 +263,18 @@
 }
 
 .legal-text {
-  font-size: 1.2rem;
-  color: var(--color-grey-light-4);
-  text-align: center;
-  padding: 2.5rem;
+  &--sidebar,
+  &--mobile {
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+  }
 
-  @media only screen and (max-width: $bp-tab-port) {
-    display: none;
+  &--sidebar {
+    @media only screen and (max-width: $bp-tab-port) {
+      display: none;
+    }
   }
 }
 
@@ -277,6 +282,81 @@
 
 .gallery {
   display: flex;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &__item {
+    flex: 1 0 33.3334%;
+    transition: all 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    @media only screen and (max-width: $bp-small) {
+      flex: 1 0 50%;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__nav {
+    &--left,
+    &--right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      border: none;
+      padding: 0.7rem;
+      justify-content: center;
+      align-content: center;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+
+      @media only screen and (max-width: $bp-small) {
+        display: flex;
+      }
+    }
+
+    &--left:hover,
+    &--right:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
+
+      .gallery__arrow {
+        fill: var(----color-grey-dark-1);
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    &--left {
+      left: 0.5rem;
+    }
+
+    &--right {
+      right: 0.5rem;
+    }
+  }
+
+  &__arrow {
+    &--left,
+    &--right {
+      height: 2rem;
+      width: 2rem;
+      fill: var(--color-primary);
+      transition: all 0.2s;
+    }
+  }
 
   &__photo {
     display: block;
@@ -288,6 +368,16 @@
   display: flex;
   border-bottom: var(--line);
   align-items: center;
+
+  @media only screen and (max-width: $bp-tiny) {
+    flex-wrap: wrap;
+    padding: 1rem;
+
+    & > * {
+      flex: 0 0 50%;
+      padding: 1rem;
+    }
+  }
 
   &__heading {
     font-size: 2.25rem;
@@ -304,6 +394,10 @@
     @media only screen and (max-width: $bp-smallest) {
       padding: 1rem;
       font-size: 1.2rem;
+    }
+
+    @media only screen and (max-width: $bp-tiny) {
+      padding: 0;
     }
   }
 
@@ -329,6 +423,10 @@
     display: flex;
     align-items: center;
 
+    @media only screen and (max-width: $bp-tiny) {
+      order: 2;
+    }
+
     &-icon {
       margin-right: 0.5rem;
     }
@@ -349,6 +447,15 @@
       margin-left: 1.5rem;
     }
 
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 0 1rem;
+    }
+
+    @media only screen and (max-width: $bp-tiny) {
+      margin-left: 0;
+      order: 1;
+    }
+
     &-average {
       font-size: 2.25rem;
       font-weight: 300;
@@ -366,6 +473,10 @@
 
       @media only screen and (max-width: $bp-phone) {
         font-size: 0.5rem;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        text-align: center;
       }
     }
   }
@@ -393,15 +504,18 @@
       margin-right: 0.7rem;
 
       // Old browsers
-      // background-image: url(../img/chevron-thin-right.svg);
-      // background-size: cover;
+      background-image: url(../img/chevron-thin-right.svg);
+      background-size: cover;
 
       // New browsers
-      background-color: var(--color-primary);
-      -webkit-mask-image: url(../img/chevron-thin-right.svg);
-      mask-image: url(../img/chevron-thin-right.svg);
-      -webkit-mask-size: cover;
-      mask-size: cover;
+      @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+        mask-size: cover;
+        background-image: none;
+      }
     }
   }
 }

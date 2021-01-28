@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-
+    <script defer src="app.js"></script>
     <title>trillo &mdash; Your all-in-one booking app</title>
   </head>
   <body>
@@ -92,7 +92,7 @@
             </li>
           </ul>
 
-          <p class="legal-text">
+          <p class="legal-text--sidebar">
             &copy; <span class="legal-date">2017</span> by trillo. All rights
             reserved.
           </p>
@@ -100,6 +100,27 @@
 
         <main class="hotel-view">
           <div class="gallery">
+            <button class="gallery__nav--left">
+              <svg class="gallery__arrow gallery__arrow--left">
+                <use
+                  xlink:href="img/arrow-long-left.svg#icon-arrow-long-left"
+                ></use>
+              </svg>
+            </button>
+            <figure class="gallery__item">
+              <img
+                src="img/hotel-2.jpg"
+                alt="Hotel Photo"
+                class="gallery__photo"
+              />
+            </figure>
+            <figure class="gallery__item">
+              <img
+                src="img/hotel-3.jpg"
+                alt="Hotel Photo"
+                class="gallery__photo"
+              />
+            </figure>
             <figure class="gallery__item">
               <img
                 src="img/hotel-1.jpg"
@@ -121,6 +142,27 @@
                 class="gallery__photo"
               />
             </figure>
+            <figure class="gallery__item">
+              <img
+                src="img/hotel-1.jpg"
+                alt="Hotel Photo"
+                class="gallery__photo"
+              />
+            </figure>
+            <figure class="gallery__item">
+              <img
+                src="img/hotel-2.jpg"
+                alt="Hotel Photo"
+                class="gallery__photo"
+              />
+            </figure>
+            <button class="gallery__nav--right">
+              <svg class="gallery__arrow gallery__arrow--right">
+                <use
+                  xlink:href="img/arrow-long-right.svg#icon-arrow-long-right"
+                ></use>
+              </svg>
+            </button>
           </div>
 
           <div class="overview">
@@ -261,5 +303,11 @@
         </main>
       </div>
     </div>
+    <footer class="footer">
+      <p class="legal-text--mobile">
+        &copy; <span class="legal-date">2017</span> by trillo. All rights
+        reserved.
+      </p>
+    </footer>
   </body>
 </html>
